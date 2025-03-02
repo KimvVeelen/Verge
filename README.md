@@ -12,3 +12,6 @@ verder kan uitbreiden met extra levels en nieuwe vaardigheden voor de speler.
 <br>
 <br>
 <img src="Schermafbeelding 2025-03-02 181025.png">
+<br>
+<br>
+Download <a href="https://github.com/KimvVeelen/Verge/blob/main/Verge_v2.exe>Verge_v2.exe</a> om uit te proberen.
