@@ -1,5 +1,4 @@
 # Verge
-Verge: The game
 <br>
 <br>
 <img src="Schermafbeelding 2025-03-02 180234.png">
