@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxwaqjxa6lvs7"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_u61bd"]
+[ext_resource type="Texture2D" uid="uid://bv2g3sawq4k3p" path="res://Assets/Sprites/Character/Character_head2.png" id="2_oyqbn"]
+[ext_resource type="Texture2D" uid="uid://b1gk0r2cm2obb" path="res://Assets/Sprites/Character/Character_v2.png" id="3_n1vk5"]
+[ext_resource type="FontFile" uid="uid://bd275sggttunm" path="res://Assets/Fonts/gamer_2/Gamer.ttf" id="4_nfycg"]
+
+[sub_resource type="Animation" id="Animation_x3juc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_llfof"]
+resource_name = "idle"
+length = 2.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 3, 4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 26, 28]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p6t8v"]
+_data = {
+"RESET": SubResource("Animation_x3juc"),
+"idle": SubResource("Animation_llfof")
+}
+
+[node name="splashscreen_w1" type="Node2D"]
+script = ExtResource("1_u61bd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -6.0
+offset_top = -5.0
+offset_right = 1159.0
+offset_bottom = 651.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(354.632, 297.632)
+scale = Vector2(4.79265, 4.79265)
+texture = ExtResource("2_oyqbn")
+hframes = 36
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(341.632, 352.632)
+scale = Vector2(4.79265, 4.79265)
+texture = ExtResource("3_n1vk5")
+hframes = 43
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_p6t8v")
+}
+
+[node name="Label" type="Label" parent="."]
+offset_left = 493.0
+offset_top = 316.0
+offset_right = 747.0
+offset_bottom = 445.0
+theme_override_fonts/font = ExtResource("4_nfycg")
+theme_override_font_sizes/font_size = 70
+text = "GET READY!
+WORLD 1 - 1"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

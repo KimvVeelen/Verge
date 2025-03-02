@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://27228v52cb7"]
+
+[ext_resource type="Script" path="res://startscreen.gd" id="1_08j7r"]
+[ext_resource type="Texture2D" uid="uid://cucsxql7jj571" path="res://Assets/Background/background2.png" id="1_720ig"]
+[ext_resource type="FontFile" uid="uid://bd275sggttunm" path="res://Assets/Fonts/gamer_2/Gamer.ttf" id="2_eis68"]
+[ext_resource type="AudioStream" uid="uid://dair0w6ln2l0l" path="res://Assets/Sound/520937__mrthenoronha__8-bit-game-intro-loop.wav" id="4_di4gs"]
+
+[node name="Startscreen" type="Node2D"]
+script = ExtResource("1_08j7r")
+
+[node name="Achtergrond" type="Sprite2D" parent="."]
+position = Vector2(574, 327)
+scale = Vector2(0.645508, 0.645508)
+texture = ExtResource("1_720ig")
+
+[node name="startgame" type="Button" parent="."]
+offset_left = 643.0
+offset_top = 375.0
+offset_right = 839.0
+offset_bottom = 436.0
+theme_override_fonts/font = ExtResource("2_eis68")
+theme_override_font_sizes/font_size = 46
+text = "Start game"
+
+[node name="endgame" type="Button" parent="."]
+offset_left = 643.0
+offset_top = 445.0
+offset_right = 839.0
+offset_bottom = 506.0
+theme_override_fonts/font = ExtResource("2_eis68")
+theme_override_font_sizes/font_size = 46
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 297.0
+offset_top = 132.0
+offset_right = 860.0
+offset_bottom = 370.0
+theme_override_colors/font_color = Color(0.877616, 0.877616, 0.877616, 1)
+theme_override_fonts/font = ExtResource("2_eis68")
+theme_override_font_sizes/font_size = 300
+text = "VERGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(297, 132)
+stream = ExtResource("4_di4gs")
+autoplay = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+self_modulate = Color(0.454524, 0.454524, 0.454524, 1)
+offset_left = 146.0
+offset_top = 375.0
+offset_right = 614.0
+offset_bottom = 582.0
+color = Color(0.517184, 0.517184, 0.517184, 0.721569)
+
+[node name="Label2" type="Label" parent="ColorRect"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 460.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("2_eis68")
+theme_override_font_sizes/font_size = 52
+text = "CONTROLS:
+SPACE - JUMP
+ARROW KEY'S - MOVE, DUCK
+X - ATTACK"
+horizontal_alignment = 1
+
+[connection signal="button_down" from="startgame" to="." method="_on_startgame_button_down"]
+[connection signal="button_down" from="endgame" to="." method="_on_endgame_button_down"]
